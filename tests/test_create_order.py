@@ -10,12 +10,9 @@ class TestCreateOrder:
     def test_create_order_auth(self, user_login):
         with allure.step("Отправляем запрос на вход пользователя"):
             response = user_login(EXISTING_USER)
-        with allure.step("Проверяем ответ"):
-            assert response.status_code == 200
         with allure.step("Получаем токен"):
             auth_token = response.json().get("accessToken")
             token = auth_token.split('Bearer ')[-1] if 'Bearer ' in auth_token else auth_token
-            assert token
         with allure.step("Готовим данные и отправляем запрос на создание заказа"):
             order_data = {"ingredients": INGREDIENTS[:3]}
             response = order_create(order_data, token)

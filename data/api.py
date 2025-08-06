@@ -2,7 +2,7 @@ import pytest
 import allure
 import requests
 
-from data.data import ENDPOINTS
+from data.urls import ENDPOINTS
 
 
 @allure.step("Создание заказа")

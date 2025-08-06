@@ -24,9 +24,10 @@ class TestUserCreate:
             assert response_json.get("success") is False
 
     @allure.title("Тест создания пользователя без заполнения обязательных полей")
-    def test_user_create_without_fields(self):
-        with allure.step("Отправляем запрос без емейла"):
-            response = user_register(USER_WITHOUT_EMAIL)
+    @pytest.mark.parametrize("user_data_without_field", USER_DATA_WITHOUT_FIELDS)
+    def test_user_create_without_fields(self, user_data_without_field):
+        with allure.step("Отправляем запрос без обязательного поля"):
+            response = user_register(user_data_without_field)
         with allure.step("Проверяем ответ"):
             assert response.status_code == 403
             response_json = response.json()

@@ -5,7 +5,7 @@ fake = Faker()
 
 def login_generator():
     login_gen = fake.user_name()
-    return f'{login_gen}'
+    return f'{login_gen}@ya.ru'
 
 def password_generator():
     password_gen = fake.random_number(7)
@@ -20,7 +20,7 @@ def generate_user_data():
     password = password_generator()
     name = name_generator()
     return {
-        "email": f"{email}@ya.ru",
+        "email": f"{email}",
         "password": f"{password}",
         "name": f"{name}",
     }

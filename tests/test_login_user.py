@@ -5,7 +5,7 @@ from data.data import EXISTING_USER, USER_INVALID_DATA
 
 
 class TestUserLogin:
-    @allure.step("Тест входа пользователя с валидными данными")
+    @allure.title("Тест входа пользователя с валидными данными")
     def test_login_valid_data_true(self, user_login):
         with allure.step("Запрос на вход с ранее зареганным пользователем"):
             response = user_login(EXISTING_USER)
@@ -15,7 +15,7 @@ class TestUserLogin:
             assert response_json.get("success") is True
             assert all(key in response_json for key in ["accessToken", "refreshToken", "user"])
 
-    @allure.step("Тест входа пользователя с неверным логином и паролем")
+    @allure.title("Тест входа пользователя с неверным логином и паролем")
     def test_login_invalid_data(self, user_login):
         with allure.step("Отправялем запрос на вход с невалидными данными"):
             response = user_login(USER_INVALID_DATA)

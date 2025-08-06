@@ -2,7 +2,7 @@ import pytest
 import requests
 
 from data.api import *
-from data.data import ENDPOINTS
+from data.urls import ENDPOINTS
 from data.generators import generate_user_data
 
 
